@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="T0bWdNTjNZTG2kDuAFUZqQSdB35I0yVXPUWEJ6TG5GU" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo Root Cause Analysis™, Apollo RCA™, ARCA™ Methodology</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,300,700" rel="stylesheet" type="text/css">
+    <link href="/Content/css?v=dlp1_OIPRaL79nPcban_P8zvJNIQ6fQ6aeLEwjiZ0CY1" rel="stylesheet"/>
+
+    
+<link href="https://store.realitycharting.com/Content/cart.css" rel="stylesheet" />
+<link href="https://store.realitycharting.com/Content/font-awesome.css" rel="stylesheet" />
+<link href="https://store.realitycharting.com/Content/jquery-ui.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="/Content/Shared/_LayoutTwoColumn.css">
+    <link href="/Scripts/video-js/video-js.min.css" rel="stylesheet" type="text/css" />
+    
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    
+</head>
+<body style="height:100%;">
+    
+
+
+<!-- top nav bar -->
+<div style="width:100%;display:block;position:fixed;top:0px;z-index: 99;">
+    <div style="float:right;width:100%;">
+        <nav class="navbar navbar-inverse" style="box-shadow: 0px 5px 20px #262626;">
+            <div class="container-fluid" style="height:40px;">
+                <div class="navbar-header dropdown">
+                    <button type="button" class="navbar-toggle" data-toggle="dropdown" style="height:34px;margin-top:4px;margin-bottom:0px;">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- drop down nav for small screens -->
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" >
+                        <li style="padding-left:16px;padding-right:16px;"><span class="fa fa-shopping-cart carticon"></span> <a href="javascript:;" style="display:inline-block;padding-left:0px;padding-right:0px;" class="cartlink" title="Your cart is empty" data-tooltip="Your cart is empty">Cart (0)</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li style="padding-left:16px;padding-right:16px;font-size:14px;font-weight:bold;">support@realitycharting.com</li>
+                        <li style="padding-left:16px;padding-top:5px;">
+                            <a href="https://account.realitycharting.com" style="font-size:13px;">My Products</a>
+                        </li>
+                        <li style="padding-left:16px;">
+                            <a href="https://account.realitycharting.com/edit" style="font-size:13px;">Edit Account</a>
+                        </li>
+                        <li style="padding-left:16px;">
+                            <a href="javascript:loginDialog.doLogout();" id="logoffLink" data-controller-logout="https://account.realitycharting.com/login/logout" style="font-size:13px;">Log Out</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="/contact-form" style="padding-left:16px;padding-right:16px;">Contact Us</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+<form action="/search-results" class="navbar-form" method="get" role="form" style="padding-right:20px;width:200px;margin-left:0px;border-style:none;">                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                                    <input type="text" class="form-control" name="search" placeholder="Search" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">Go</button>
+                                    </span>
+                                </div>
+</form>                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="/methodology" style="font-size:18px;padding-left:18px;padding-right:8px;">Methodology</a></li>
+                        <li><a href="/software" style="font-size:18px;padding-left:18px;padding-right:8px;">Software</a></li>
+                        <li><a href="/training" style="font-size:18px;padding-left:18px;padding-right:8px;">Training</a></li>
+                        <li><a href="/support" style="font-size:18px;padding-left:18px;padding-right:8px;">Support</a></li>
+                        <li><a href="/company" style="font-size:18px;padding-left:18px;padding-right:8px;">About Us</a></li>
+                        <li><a href="https://store.realitycharting.com" style="font-size:18px;padding-left:18px;padding-right:0px;">Store</a></li>
+                    </ul>
+                </div>
+                <!-- regular top menu -->
+                <div style="height:40px;" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right" style="margin-top:4px;margin-bottom:-4px;">
+                        <li><a style="font-size:13px;padding-left:6px;padding-right:6px;"  href="https://www.realitycharting.com/activationcodes">Activation Codes</a></li>
+                        <li style="padding-left:6px;padding-right:6px;"><span class="fa fa-shopping-cart carticon" style="color:whitesmoke;"></span><a href="javascript:;" style="display:inline-block;font-size:13px;padding-left:0px;padding-right:0px;" class="cartlink" id="cartlink" title="Your cart is empty" data-tooltip="Your cart is empty" data-dialog-cart="https://store.realitycharting.com/cart/_CartPartial">Cart (0)</a></li>
+                        <li class="dropdown" style="padding-left:6px;padding-right:6px;">
+                            <span id="user-dropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <a style="display:inline-block;font-size:13px;">support@realitycharting.com</a><span class="caret" style="color:whitesmoke;"></span>
+                            </span>
+                            <ul class="dropdown-menu header" aria-labelledby="user-dropdown" style="background-color:#333;">
+                                <li>
+                                    <a href="https://account.realitycharting.com" style="font-size:13px;">My Products</a>
+                                </li>
+                                <li>
+                                    <a href="https://account.realitycharting.com/edit" style="font-size:13px;">Edit Account</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:loginDialog.doLogout();" id="logoffLink" data-controller-logout="https://account.realitycharting.com/login/logout" style="font-size:13px;">Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact-form" style="font-size:13px;padding-left:6px;padding-right:6px;">Contact Us</a></li>
+                        <li>
+<form action="/search-results" class="form-inline" method="get" role="form" style="padding-left:6px;padding-right:0px;">                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon icon"><span class="glyphicon glyphicon-search"></span></span>
+                                    <input type="text" class="form-control" name="search" placeholder="Search" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">Go</button>
+                                    </span>
+                                </div>
+</form>                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- main site nav, this is in the drop down nav for small screens -->
+        <nav class="navbar navbar-default collapse navbar-collapse">
+            <div class="container-fluid" style="border-bottom:solid 2px; box-shadow: 0px 5px 20px #262626;">
+                <div style="height:34px;margin-left:236px;margin-right:-16px;">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="active"><a href="/methodology" style="font-size:18px;margin-left:10px;margin-top:1px;padding-left:8px;padding-right:8px;">Methodology</a></li>
+                        <li ><a href="/software" style="font-size:18px;margin-top:1px;padding-left:8px;padding-right:8px;">Software</a></li>
+                        <li ><a href="/training" style="font-size:18px;margin-top:1px;padding-left:8px;padding-right:8px;">Training</a></li>
+                        <li ><a href="/support" style="font-size:18px;margin-top:1px;padding-left:8px;padding-right:8px;">Support</a></li>
+                        <li ><a href="/company" style="font-size:18px;margin-top:1px;padding-left:8px;padding-right:8px;">About Us</a></li>
+                        <li><a href="https://store.realitycharting.com" style="font-size:18px;margin-top:1px;padding-left:8px;padding-right:8px;">Store</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- float logo left -->
+    <a class="floatlogo" href="/" style="box-shadow: 0px 5px 20px #262626; width:250px; height: 91px;border-bottom-left-radius:12px;border-bottom-right-radius:12px;"></a>
+</div>
+    <div class="container-fluid body-content" style="margin-top:100px;min-height:500px;height:80%;">
+        <div class="row" style="height:100%;">
+            <div class="col-sm-8 col-sm-push-4 col-md-9 col-md-push-3 col-lg-9 col-lg-push-3" style="background: transparent url('/Content/Shared/breaker.gif') 0 0 repeat-y;padding-left:30px;">
+                
+
+<h1>The Apollo Root Cause Analysis&trade; Method</h1>
+<img alt="System_Interaction.jpg" src="/Content/Methodology/Index/Index/System_Interaction.jpg" style="float:right;margin:0 15px;max-width:340px; width:90%" />
+<h2 class="text-center">
+    <a href="/Content/Methodology/Index/Index/Effective Problem Solving Video.mp4" class="html5lightbox" data-width="1024" data-height="768" title="Watch a 17 minute video." >Watch a Video</a>
+</h2>
+<p>
+    Apollo Root Cause Analysis&trade; is a <a href="http://youtu.be/k7ItSa7B-5s" title="Watch a Short Video" >principle-based</a> problem solving method designed to help you master strategies which, combined with your copy of RealityCharting&reg; software, will enable you to construct a powerful understanding of any problem.
+</p>
+<p>
+    Opportunities for solutions quickly multiply when tied to an evidence based understanding of the cause and effect relationships.
+</p>
+<p>
+    Based on the achievement of the thousands of students who have come before you, we can say with confidence that those who implement this methodology using the RealityCharting&reg; software achieve incredible results by finding cost effective solutions that prevent problems from recurring and by implementing the <a href="training/effective-problem-solving-culture" title="See Details">Effective Problem-Solving Culture plan</a> significantly reduce big problems from happening in the first place.
+</p>
+
+
+
+
+            </div>
+            <div class="col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 col-lg-3 col-lg-pull-9 leftnav" style="overflow-y:auto;height:100%;">
+                
+    
+<nav style="display:inline;">
+    <ul class="nav nav-pills nav-stacked">
+        <li >
+            <a href="/methodology/apollo-rca-principles">Cause &amp; Effect Principles</a>
+        </li>
+
+        <li >
+            <a href="/methodology/book">RealityCharting&#174; Book</a></li>
+        <!--<ul style="margin-left:20px;" class="nav nav-pills nav-stacked">
+            <li >
+                <a href="/methodology/sevenstepstoeffectiveproblemsolving">Four Steps or Seven Steps?</a>
+            </li>
+        </ul>-->
+        <li >
+            <a href="/methodology/methods-compared">RCA Methods Compared</a></li>
+
+    </ul>
+</nav>
+
+            </div>
+            
+    
+<div class="dropdown leftnavsmall">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Methodology
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li >
+            <a href="/methodology/apollo-rca-principles">Cause &amp; Effect Principles</a>
+        </li>
+            <li class="subitem ">
+                <a href="/methodology/apollo-rca-principles/causes-and-effects">1) Causes &amp; Effects</a>
+            </li>
+            <li class="subitem ">
+                <a href="/methodology/apollo-rca-principles/actions-and-conditions">2) Actions &amp; Conditions</a>
+            </li>
+            <li class="subitem ">
+                <a href="/methodology/apollo-rca-principles/infinite-continuum">3) Infinite Continuum</a>
+            </li>
+            <li class="subitem ">
+                <a href="/methodology/apollo-rca-principles/time-and-space-frame">4) Time &amp; Space Frame</a>
+            </li>
+        <li >
+            <a href="/methodology/book">RealityCharting&#174; Book</a>
+        </li>
+        <!--<ul style="margin-left:20px;" class="nav nav-pills nav-stacked">
+            <li >
+                <a href="/methodology/sevenstepstoeffectiveproblemsolving">Four Steps or Seven Steps?</a>
+            </li>
+        </ul>-->
+        <li >
+            <a href="/methodology/methods-compared">RCA Methods Compared</a>
+        </li>
+
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+    <div class="container-fluid footer-content">
+        
+<footer>
+    <div class="container-fluid" style="padding-left:96px;padding-right:96px;">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>
+                    The Apollo Root Cause Analysis&trade; Method
+                </h2>
+                <p>Apollo RCA&trade; (ARCA&trade;) is a new way of thinking that goes far beyond the traditional root cause analysis problem solving processes. It facilitates the creation of a common reality using input from all stakeholders to produce an evidence-based understanding of the problem. Ensuring your solutions address proven causes and prevent recurrence.</p>
+            </div>
+            <div class="col-md-4">
+                <h2>&nbsp;</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul style="list-style: outside none none;">
+                            <li><a href="/rcbook-parts-form" class="" data-message="You must log in to access the eBook Chapters" data-redirect="https://www.realitycharting.com/rcbook-parts-form" data-login-redirect="https://account.realitycharting.com">eBook Chapters 1-3</a></li>
+                            <li><a href="/training/accreditation">Accreditation</a></li>
+                            <li><a href="/training/rc-coach">RC Coach&trade;</a></li>
+                            <li><a href="https://store.realitycharting.com">Store</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul style="list-style: outside none none;">
+                            <li><a href="/realitycharting">RealityCharting&reg;</a></li>
+                            <li><a href="/rc-simplified">RC Simplified&trade;</a></li>
+                            <li><a href="/rc-pro-enterprise">RC Pro&trade;</a></li>
+                            <li><a href="/feedback-form" class="" data-message="You must log in to use the Feedback form" data-redirect="https://www.realitycharting.com/feedback-form" data-login-redirect="https://account.realitycharting.com">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="min-height:210px;">
+                <h2>&nbsp;</h2>
+                <div>
+                    <div>
+                        <div><a href="https://goo.gl/maps/4u43xfH8Jo12" target="_blank"><img alt="Google map Apollonian" src="/Content/Shared/location-map-pin.gif" style="float:left;margin-top:3px;margin-right:5px;margin-bottom:20px;" height="70" width="71"></a></div>
+                        <div><a class="btn btn-default" href="/contact-form">Contact</a></div>
+                    </div>
+                    <div class="address">
+                        Apollonian Publications, LLC<br>
+                        125 Trade Court, Suite F #175<br>
+                        Mooreseville, NC 28117<br>
+                        <div>
+                        Call us (US) +1 206-922-7910
+                            <div>Contracts - Ext 1</div>
+                            <div>Technical Support - Ext 2</div>
+                            <div>Training and Investigation Support - Ext 3</div>
+                            <div>Accounts - Ext 4, All other - Ext 5</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top:15px;">
+        <div class="row">
+            <div class="col-md-12 text-center">Copyright &copy;2018 Apollonian Publications LLC | <a href="/terms-and-conditions-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a></div>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    <script src="/bundles/jquery?v=hGJe1pL6DFZhQ16JpPUgKI062bVstkADFXOTI-Sh-B81"></script>
+
+    <script src="/bundles/bootstrap?v=-g7cxTWQV6ve_iRyKtg7LoBytQltgj_w8zTNeaLaBc41"></script>
+
+    
+    <script src="/Scripts/html5lightbox/html5lightbox.js"></script>
+
+
+    
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://store.realitycharting.com/Scripts/jquery-ui.js"></script>
+<script src="https://store.realitycharting.com/Scripts/jquery.ui.position.js"></script>
+<script src="https://store.realitycharting.com/Scripts/_cartDialog.js"></script>
+<script src="https://store.realitycharting.com/Scripts/_checkoutDialog.js"></script>
+<script src="https://store.realitycharting.com/Scripts/_shippingDialog.js"></script>
+<script src="https://store.realitycharting.com/Scripts/_thankyouDialog.js"></script>
+<script src="https://account.realitycharting.com/Scripts/_loginDialog.js"></script>
+<script src="https://account.realitycharting.com/Scripts/_lockoutDialog.js"></script>
+<script src="https://account.realitycharting.com/Scripts/_forgotPasswordDialog.js"></script>
+<script src="https://account.realitycharting.com/Scripts/_registerDialog.js"></script>
+
+    <script src="/Scripts/video-js/video.min.js"></script>
+    <script type="text/javascript">
+        videojs.options.flash.swf = "/ / Scripts/video-js/video-js.swf";
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-11232730-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
